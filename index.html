@@ -6,19 +6,125 @@
   <title>Movie Explorer</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <style>
+    /* Reset some default styles */
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      max-width: 800px;
-      margin: auto;
-      padding: 20px;
+      background-color: #141414;
+      color: #fff;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 20px 40px;
     }
-    #results img, #topSearches img {
-      max-width: 150px;
-    }
-    .movie {
+
+    h1 {
+      font-weight: 700;
+      font-size: 3rem;
       margin-bottom: 20px;
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 10px;
+      color: #e50914; /* Netflix red */
+      letter-spacing: 2px;
+    }
+
+    input#searchQuery {
+      width: 60%;
+      padding: 12px 15px;
+      border-radius: 4px 0 0 4px;
+      border: none;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    button#searchBtn {
+      padding: 12px 25px;
+      border: none;
+      background-color: #e50914;
+      color: white;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 0 4px 4px 0;
+      transition: background-color 0.3s ease;
+    }
+
+    button#searchBtn:hover {
+      background-color: #f6121d;
+    }
+
+    h2 {
+      margin-top: 40px;
+      margin-bottom: 20px;
+      font-weight: 700;
+      border-bottom: 2px solid #333;
+      padding-bottom: 5px;
+      font-size: 2rem;
+    }
+
+    #topSearches, #results {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 20px;
+    }
+
+    .movie {
+      background-color: #222;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.8);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .movie:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(229, 9, 20, 0.7);
+    }
+
+    .movie img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .movie h2, .movie h3 {
+      margin: 10px 12px 6px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .movie p {
+      margin: 0 12px 12px;
+      font-size: 0.9rem;
+      color: #ddd;
+      flex-grow: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 5;
+      -webkit-box-orient: vertical;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 15px 20px;
+      }
+      input#searchQuery {
+        width: 100%;
+        border-radius: 4px 4px 0 0;
+      }
+      button#searchBtn {
+        width: 100%;
+        border-radius: 0 0 4px 4px;
+        margin-top: 5px;
+      }
+      #topSearches, #results {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      }
     }
   </style>
 </head>
