@@ -11,7 +11,7 @@ if (!$movieId || !$rating || $rating < 1 || $rating > 5) {
     exit;
 }
 
-$stmt = $pdo->prepare("INSERT INTO movie_ratings (movie_id, rating) VALUES (?, ?)");
+$stmt = $pdo->prepare("INSERT INTO ratings (movie_id, rating_value, created_at) VALUES (?, ?, NOW())");
 $stmt->execute([$movieId, $rating]);
 
 echo json_encode(['success' => true]);
