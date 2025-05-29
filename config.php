@@ -1,6 +1,6 @@
 <?php
 $host = 'localhost';
-$db = 'movie_explorer_db'; // make sure this matches your phpMyAdmin DB
+$db = 'movie_explorer'; // make sure this matches your phpMyAdmin DB
 $user = 'root';
 $pass = '';
 $charset = 'utf8mb4';
